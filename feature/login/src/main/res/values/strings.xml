@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login_label">Login</string>
+    <string name="login_phone_label">Phone</string>
+    <string name="login_phone_placeholder">Enter your Phone</string>
+    <string name="login_password_label">Password</string>
+    <string name="login_password_placeholder">Enter your Password</string>
+
+    <string name="login_with_google">Login with Google</string>
+    <string name="login_with_vk">Login with VK</string>
+
+    <string name="has_not_account_label">Don’t have an account?</string>
+    <string name="register_navigate">Register</string>
+</resources>
