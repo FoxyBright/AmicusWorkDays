@@ -11,9 +11,9 @@ import androidx.compose.ui.res.painterResource
 @Composable
 fun AWDIcon(
     icon: Int,
-    description: String? = null,
     modifier: Modifier = Modifier,
     tint: Color = LocalContentColor.current,
+    description: String? = null,
 ) {
     Icon(
         painterResource(icon),
@@ -24,11 +24,12 @@ fun AWDIcon(
 }
 
 @Composable
+@Suppress("unused")
 fun AWDVectorIcon(
     vector: ImageVector,
-    description: String? = null,
     modifier: Modifier = Modifier,
     tint: Color = LocalContentColor.current,
+    description: String? = null,
 ) {
     Icon(
         imageVector = vector,

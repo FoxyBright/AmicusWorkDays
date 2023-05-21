@@ -1,56 +1,46 @@
+@file:Suppress("UnstableApiUsage", "DEPRECATION")
+
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
 }
 
 android {
-    namespace = "com.amicus.workdays.feature.login"
-    compileSdk = 33
-    
+    namespace = "${Config.applicationId}.feature.login"
+    compileSdk = Config.compileSdk
     defaultConfig {
-        minSdk = 26
-        targetSdk = 33
-        
+        minSdk = Config.minSdk
+        targetSdk = Config.targetSdk
         testInstrumentationRunner =
-            "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
+            Config.testInstrumentationRunner
+        consumerProguardFiles(Config.consumer)
     }
-    
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = Config.isMinifyEnabled
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                getDefaultProguardFile(Config.proguardFile),
+                Config.proguard
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
-    buildFeatures {
-        compose = true
-    }
+    buildFeatures { compose = true }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0"
+        kotlinCompilerExtensionVersion =
+            Config.kotlinCompilerExVer
+        kotlinCompilerVersion =
+            Config.kotlinCompilerVer
     }
+    compileOptions {
+        sourceCompatibility = Config.sourceCompatibility
+        targetCompatibility = Config.sourceCompatibility
+    }
+    kotlinOptions { jvmTarget = Config.jvmTarget }
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.10.1")
-    implementation("androidx.activity:activity-compose:1.7.1")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
-    implementation("androidx.compose.material3:material3:1.2.0-alpha01")
-    implementation("androidx.compose.ui:ui:1.4.3")
-    implementation("androidx.compose.ui:ui-tooling-preview:1.4.3")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
-    implementation("com.google.android.material:material:1.9.0")
-    
-    implementation(project(":app"))
+    feature()
     implementation(project(":shared"))
+    implementation(project(":core"))
+    implementation(project(":data"))
 }
